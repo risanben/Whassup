@@ -4,28 +4,31 @@ import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
-import { BsChatLeftDotsFill } from 'react-icons/bs'
-import { BsFilter } from 'react-icons/bs'
+import { BsChatLeftDotsFill, BsFilter } from 'react-icons/bs'
+import { MdOutlineArchive } from 'react-icons/md'
 
 
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
+    const [userChats, setUserChats] = useState(null)
 
     useEffect(() => {
         loadChats()
     }, [user])
+
     async function loadChats() {
         console.log('user', user)
-        // try {
-        //     const user = await login(credentials)
-        //     showSuccessMsg(`Welcome: ${user.fullname}`)
-        // } catch(err) {
-        //     showErrorMsg('Cannot login')
-        // }
+        try {
+            const user = await loadChats(user)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+        } catch(err) {
+            showErrorMsg('Cannot login')
+        }
     }
+
     async function onLogin(credentials) {
         try {
             const user = await login(credentials)
@@ -64,16 +67,24 @@ export function AppHeader() {
                     </>}
             </section>
 
-            <section className="chat-search flex align-center space-between">
-                <section className="input-section flex">
-                    <input type="text" placeholder='Search in chats' />
+            {user && <>
+                <section className="chat-search flex align-center space-between">
+                    <section className="input-section flex">
+                        <input type="text" placeholder='Search in chats' />
+                    </section>
+                    <BsFilter className='chat-filter-btn' />
                 </section>
-                <BsFilter className='chat-filter-btn' />
-            </section>
 
-            <section className="archive">
+                <section className="archive flex align-center">
+                    <MdOutlineArchive className='archive-logo' />
+                    <section className="archive-header flex align-center">
+                        <span className='archive-txt'>Archived</span>
+                        <span className="archive-quantity">1</span>
+                    </section>
+                </section>
 
-            </section>
+
+            </>}
             <nav>
                 {/* {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)} */}
 
