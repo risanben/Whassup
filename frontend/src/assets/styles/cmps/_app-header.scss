@@ -1,53 +1,96 @@
 .app-header {
-    background-color: $clr4;
-    padding: 10px;
+    background-color: $main-light-bg;
+    color: $main-font-clr;
+    border-right: 2px solid red;
+    max-width: 50vw;
+    height: 100vh;
 
 
-    .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        color: $clr1;
-
-        .score {
-            background-color: $clr2;
-            color: $clr6;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
-        }
+    .top-section {
+        background-color: $main-dark-bg;
+        height: 60px;
+        align-items: center;
+        padding-left: 12px;
 
         img {
-            width: 32px;
-            height: 32px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
         }
+
+        .menu-btns {
+            // border: 1px solid blue;
+            margin-left: 40px;
+            flex-grow: 1;
+            justify-content: flex-end;
+
+            &>* {
+                margin-left: 10px;
+            }
+
+            .menu-btn {
+                font-size: 25px;
+            }
+
+            .chat-btn {
+                margin-top: 3px;
+                font-size: 20px;
+            }
+        }
     }
 
-    .user-info .btn-link {
-        color: $clr2;
+    .chat-search{
+        height: 50px;
+        border-bottom: 1px solid $main-dark-bg;
+        // border: 2px solid green;
+
+        .input-section{
+           background-color: $main-dark-bg;
+           border-radius: 8px;
+           flex-grow: 1;
+           height: 35px;
+           margin-left: 12px;
+
+           input{
+            background-color: inherit;
+            border: none;
+            width: 100%;
+            border-radius: 8px;
+            padding-left: 6px;
+           }
+
+        }
+
+        .chat-filter-btn{
+            font-size: 20px;
+            margin-left: 5px;
+        }
     }
 
-    nav {
-        font-size: .8em;
-        background-color: $clr5;
-        padding: 5px;
+    // .user-info .btn-link {
+    //     color: $main-dark-bg;
+    // }
 
-    }
+    // nav {
+    //     font-size: .8em;
+    //     // background-color: $clr5;
+    //     padding: 5px;
 
-    nav a:first-child {
-        margin-right: 30px;
-    }
+    // }
 
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
+    // nav a:first-child {
+    //     margin-right: 30px;
+    // }
 
-    nav .active {
-        color: $clr1;
-    }
+    // nav a:not(:first-child) {
+    //     border-top: 1px solid $main-dark-bg;
+    //     padding: 0 5px;
+    //     margin: 10px;
+    // }
+
+    // nav .active {
+    //     color: $main-dark-bg;
+    // }
 
 }
